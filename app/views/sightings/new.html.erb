@@ -14,9 +14,9 @@
   <label for="sighting_location">Location</label>
   <input id="sighting_location" name="sighting[location]" type="text" value="<%= @sighting.location %>">
 
-<select name="sighting[species_id]">
+<select name="sighting[species_id]" selected="@sighting.species.id.to_i">
     <%Species.all.each do |species| %>
-      <option value="<%= species.id %>"> <%= species.name %> </option>
+      <option value="<%= species.id.to_i %>"> <%= species.name %> </option>
     <% end %>
 </select>
 

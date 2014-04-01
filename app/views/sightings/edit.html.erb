@@ -11,24 +11,24 @@
 
 <form action='/sightings/<%= @sighting.id %>' method="post">
   <input name="_method" type="hidden" value="patch">
-
   <label for="sighting_location">Location</label>
+
   <input id="sighting_location" name="sighting[location]" type="text" value="<%= @sighting.location %>">
+  <select name="sighting[species_id]" selected="@sighting.species.id.to_i">
+    <option value="<%= @sighting.species.id.to_i %>"> <%= @sighting.species.name %> </option>
+      <%Species.all.each do |species| %>
+        <% if species.id != @sighting.species.id.to_i %>
+          <option value="<%= species.id.to_i %>"> <%= species.name %> </option>
+        <% end %>
+      <%end %>
+  </select>
 
-<select name="sighting[species_id]" selected="<%= @sighting.species.id.to_i %>">
-    <%Species.all.each do |species| %>
-      <option value="<%= species.id.to_i %>"> <%= species.name %> </option>
-    <% end %>
-</select>
-
-<label for="date">Date:</label>
+  <label for="date">Date:</label>
   <input id="date" name="sighting[date]" type="text" value="<%= @sighting.date %>">
 
-<label for="time">Time:</label>
+  <label for="time">Time:</label>
   <input id="time" name="sighting[time]" type="text" value="<%= @sighting.time.strftime "%H:%M" %>">
-
   <button>Update sighting</button>
-
 </form>
 
 <p><a href="/sightings/">Back</a></p>
