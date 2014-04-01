@@ -1,0 +1,25 @@
+<h1>Edit:</h1>
+
+<h4>Name: <%= @species.name %></h4>
+
+<h4>Description: <%= @species.description %></h4>
+
+<% if @species.errors.any? %>
+  <p> Here are your errors: </p>
+  <ul>
+  <% @species.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/species/<%= @species.id %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="species_name">Name</label>
+  <input id="species_name" name="species[name]" type= "text" value="<%= @species.name %>">
+  <label for="species_description">description</label>
+  <input id="species_description" name="species[description]" type= "text" value="<%= @species.description %>">
+  <button>Update species</button>
+</form>
+
+<p><a href="/species">Back</a></p>

@@ -17,4 +17,29 @@ class SpeciesController < ApplicationController
       render('species/new.html.erb')
     end
   end
+
+  def show
+    @species = Species.find(params[:id])
+    render('species/show.html.erb')
+  end
+
+  def edit
+    @species = Species.find(params[:id])
+    render('species/edit.html.erb')
+  end
+
+  def update
+    @species = Species.find(params[:id])
+    if @species.update(params[:species])
+      render('species/update_success.html.erb')
+    else
+      render('species/edit.html.erb')
+    end
+  end
+
+  def destroy
+    @species = Species.find(params[:id])
+    @species.destroy
+    render('species/destroy_success.html.erb')
+  end
 end

@@ -1,0 +1,12 @@
+<h1><%= @species.name %></h1>
+
+<p><%= @species.description %></p>
+
+<p><a href="/species/<%= @species.id %>/edit">Edit</a></p>
+<p><a href="/species/<%= @species.id %>"
+            data-confirm="Are you sure you would like to delete <%= @species.name %>?"
+            data-method="delete"
+            rel="nofollow">Delete</a></p>
+
+<p><a href='/species'>Back</a></p>
+
