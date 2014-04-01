@@ -1,0 +1,20 @@
+<h1>Create a new species</h1>
+
+<% if @species.errors.any? %>
+  <h3>Please fix these errors:</h3>
+    <ul>
+      <%  @species.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+<% end %>
+<form action='/species/' method="post">
+  <label for="species_name">Name</label>
+  <input id="species_name" name="species[name]" type="text" value="<%= @species.name %>">
+  <label for="species_description">Description</label>
+  <input id="species_description" name="species[description]" type="text" values="<%= @species.description %>">
+  <button>Create Species</button>
+
+</form>
+
+<p><a href="/species/">Back</a></p>
