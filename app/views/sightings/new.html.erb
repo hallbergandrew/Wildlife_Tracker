@@ -1,0 +1,33 @@
+<h1>Document Sighting</h1>
+
+<% if @sighting.errors.any? %>
+  <h3>Please fix these errors:</h3>
+    <ul>
+      <%  @sighting.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<form action='/sightings/' method="post">
+
+  <label for="sighting_location">Location</label>
+  <input id="sighting_location" name="sighting[location]" type="text" value="<%= @sighting.location %>">
+
+<select name="sighting[species_id]">
+    <%Species.all.each do |species| %>
+      <option value="<%= species.id %>"> <%= species.name %> </option>
+    <% end %>
+</select>
+
+<label for="date">Date:</label>
+  <input id="date" name="sighting[date]" type="text" value="<%= Date.today %>">
+
+<label for="time">Time:</label>
+  <input id="time" name="sighting[time]" type="text" value="<%= Time.now.strftime "%H:%M" %>">
+
+  <button>Create sighting</button>
+
+</form>
+
+<p><a href="/sightings/">Back</a></p>

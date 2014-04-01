@@ -1,0 +1,11 @@
+<h1>Sightings</h1>
+
+
+<ul>
+<% @sightings.each do |sighting| %>
+  <li><a href="/sightings/<%= sighting.id %>"><%= ("location: " + sighting.location + " on " + sighting.date.to_s + " at " + (sighting.time.strftime "%H:%M") + " saw " + sighting.species.name) %></a></li>
+<% end %>
+</ul
+
+<p><a href='/sightings/new'>Create New</a></p>
+

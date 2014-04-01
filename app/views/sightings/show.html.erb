@@ -1,0 +1,21 @@
+<h1>sighting details</h1>
+
+<ul>
+<li>Location: <%= @sighting.location %></li>
+<li>Date: <%= @sighting.date %></li>
+  <li>Time: <%= @sighting.time %></li>
+    <li>Species: <%= @sighting.species.name %></li>
+
+
+</ul>
+
+<p><a href="/sightings/<%= @sighting.id %>/edit">Edit</a></p>
+
+<p><a href="/sightings">Back</a> </p>
+
+<p><a href="/sightings/<%= @sighting.id %>"
+      data-confirm="Are you sure you would like to delete the sighting?"
+            data-method="delete"
+            rel="nofollow">Delete</a></p>
+
+
