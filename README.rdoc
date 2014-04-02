@@ -25,3 +25,21 @@ end
 This code may not be exactly correct... but should get you on the right path.
 
 Finally, let users narrow their reports down to a particular region.
+
+To run on Heroku:
+
+bundle install --without production
+bundle
+When you start working on a new computer, generate a new pair of SSH keys by typing $ ssh-keygen -t rsa -C your_email@address.com. Press enter without typing anything when it prompts you for the file and for the passphrase. If it prompts you to overwrite the existing keys, say yes.
+Run $ heroku login and enter your Heroku credentials when prompted.
+Run $ heroku keys:add to add the SSH keys for this machine to your Heroku account.
+Set up your Heroku app.
+If you haven't created a Heroku app yet, run $ heroku create your_app_name.
+If you have already created a Heroku app for this project, run $ heroku git:remote -a your_app_name to add a Git remote called heroku that points to your Heroku app.
+**Push your code to Heroku with $ git push heroku master.
+**THEN RUN $ heroku run db:migrate
+(to create new species /species is the index)
+
+Give your pair access to the app with $ heroku sharing:add your_pairs_email@their_address.com.
+When you're done with the machine, remove your SSH keys from Heroku with $ heroku keys:remove your_email@address.com, delete them from the computer with $ rm ~/.ssh/*, and log out of Heroku with $ heroku logout.
+If you get the error Permission denied (publickey), run $ rm ~/.ssh/* to clear the SSH settings off the machine, and then try again starting with step 1.
