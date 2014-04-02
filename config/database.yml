@@ -7,3 +7,8 @@ test:
   adapter: postgresql
   database: wildlife_tracker_test
 
+production:
+  adapter: postgresql
+  database: wildlife_tracker_production
+
+
